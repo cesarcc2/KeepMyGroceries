@@ -1,0 +1,67 @@
+
+ion-content{
+    --padding-start: 1rem;
+}
+.Medium{
+    font-family: "Raleway-Medium";
+}
+
+.Bold{
+    font-family: "Raleway-Bold";
+}
+
+.SemiBold{
+    font-family: "Raleway-SemiBold";
+}
+
+#Title{
+
+    h2{
+        font-size: 24px;
+        color:#222222;
+    }
+}
+
+#Subtitle{
+    font-size: 14px;
+    color:rgba(112, 112, 112, 0.671);
+}
+
+.ion-margin-vertical{
+    margin: -2px 0 !important;
+}
+
+.colLabel{
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+}
+
+.label{
+    font-size: 14px;
+    color:rgba(112, 112, 112, 1);
+}
+
+ion-radio{
+    --background-checked:rgba(21, 94, 126, 1);
+    --border-color:rgba(21, 94, 126, 1);
+    --border-color-checked:rgba(21, 94, 126, 1);
+    --checkmark-color:#FFF;
+    --border-width:1px;
+    --size:30px;
+    --border-radius:0px;
+}
+
+
+#cancelBTN{
+    --background:#707070;
+    height: 2.7rem !important;
+    width:5.3rem !important;
+    
+}
+
+#submitBTN{
+    --background:#44A9D6;
+    height: 2.7rem !important;
+    width:5.3rem !important;
+}

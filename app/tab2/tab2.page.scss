@@ -1,0 +1,215 @@
+ion-footer{
+    background: #222 !important;
+}
+
+ion-content{
+    background-color: #F5F5F5;
+}
+
+.line{
+    width: 13.5rem;
+    height: 80px;
+    border-bottom: 2px solid #44A9D6;
+    position: absolute;
+    left: 0px;
+}
+
+.active{
+    padding-right: 10px;
+    color: rgb(25, 187, 57);
+}
+
+.disabled{
+    padding-right: 10px;
+    color: rgb(202, 16, 16);
+}
+
+.ordersHeader{
+ font-size:15px;
+ font-weight: 300px;
+ color: black;
+}
+
+.ordersContent{
+    border-top: 1px solid rgba(133, 133, 133, 0.356);
+}
+
+.PostList{
+    font-size: 10px;
+    ion-item{
+        --padding-end:0px;
+        --padding-start:7px;
+        --inner-padding-end: 0px;
+    }
+}
+
+.OrderList{
+    font-size: 10px;
+    padding-bottom:0px !important;
+    padding-top:0px !important;
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+.dark{
+    --background:#123544;
+    background-color:#123544;
+    color:#FFF;
+
+    ion-label,ion-button{
+        font-family: "Raleway-SemiBold";
+    }
+
+    ion-button{
+        font-size: 0.7rem;
+    }
+}
+
+.Darker{
+    --background:rgb(11, 28, 36);
+    background-color:rgb(11, 28, 36);
+}
+
+.round { 
+    border-radius: 15px !important; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+    padding-bottom: 5px; 
+    padding-top: 5px;
+}
+
+.titleItem{
+    height: 25px;
+    --background: #44A9D6;
+    label{
+        font-family: "Raleway-SemiBold";
+        color:#FFF;
+        margin:auto;
+        padding-bottom: 25px;
+    }
+}
+
+.OrderList{
+    font-size: 12px;
+    color:black;
+}
+
+ion-slide{
+    --background:#F5F5F5;
+    background-color:#F5F5F5;
+}
+
+
+.fullHeight{
+    height: 100%;
+}
+
+.fullHeightSlides{
+    height:90%;
+}
+
+
+.HeaderRow{
+    padding-top:1rem;
+    height:30%;
+    text-align: left;
+    margin-left: 1rem;
+    color:#454F63;
+    line-height: 0px;
+    p{
+        font-family:"Raleway-Regular";
+    }
+    h3{
+        font-family:"Raleway-SemiBold";
+    }
+
+    ion-col{
+        margin-bottom: 0px !important;
+    }
+}
+
+.roundItem{
+    --border-radius:10px;
+} 
+
+.labelsemi{
+    font-size: 0.7rem;
+    margin-right: 10px;
+}
+
+.badge{
+    font-size: 12px;
+}
+
+.bottomMargin{
+    margin-bottom: 5px;
+}
+
+.OrderInfoLabel{
+    font-size: 10px;
+}
+
+.width90{
+    width:90%;
+}
+
+ion-segment{
+    font-family: "Raleway-SemiBold";
+    
+}
+
+
+
+#InsertHostData{
+    --background:#434658;
+    height: 100%;
+    vertical-align: middle !important;
+
+    h2{
+        font-family: "Raleway-SemiBold";
+        font-size: 20px;
+        color: rgb(235, 235, 235);
+    }
+
+    ion-button{
+        --background:#155E7E;
+    }
+
+    ion-list{
+        font-family: "Raleway-Regular";
+        font-size:9px;
+    }
+    .round { 
+        border-radius: 15px !important; 
+        padding-left: 10px !important; 
+        padding-right: 10px !important; 
+        padding-bottom: 5px !important; 
+        padding-top: 5px !important;
+    }
+
+    .Grid2{
+        height: 100%;
+    }
+
+    .HeaderHostData{
+        height: 30%;
+        ion-col{
+            height: 30%; 
+        }
+    }
+
+    .BodyHostData{
+        height: 50%;
+        ion-col{
+            height: 30%; 
+        }
+    }
+
+    .SubmitHostData{
+        height: 10%;
+        ion-col{
+            height: 30%; 
+        }
+    }
+}
+

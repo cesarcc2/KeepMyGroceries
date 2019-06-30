@@ -1,0 +1,158 @@
+<ion-content fullscreen *ngIf="this.Post;">
+
+  <ion-segment [(ngModel)]="tabs" id="ionSegment" (ionChange)="TabChange($event)">
+    <ion-segment-button value="storage">
+      <ion-label>STORAGE</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="schedule">
+      <ion-label>SCHEDULE</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-slides #slider class="fullHeight" (ionSlideDidChange)="SlideChange()">
+    <ion-slide class="fullHeight2">
+      <ion-grid no-padding class="fullHeight2">
+        <ion-row class="HeaderRow">
+          <ion-col class="HeaderCol" size="12" text-left>
+            <p>{{Post.title}}</p>
+            <h4>Details <ion-icon name="create" (click)="EditToggle()" [ngClass]="{'active' : EditState}"></ion-icon>
+            </h4>
+          </ion-col>
+          <div class="line"></div>
+        </ion-row>
+        <ion-row text-left padding-left>
+          <ion-col class="imgCol">
+            <p id="descriptionP" *ngIf="!EditState">{{Post.description}}</p>
+            <ion-list *ngIf="EditState" margin class="round">
+              <ion-item class="round" lines="none">
+                <ion-input class="round" value="{{Post.title}}" placeholder="{{Post.title}}"></ion-input>
+              </ion-item>
+            </ion-list>
+            <ion-list *ngIf="EditState" margin class="round">
+              <ion-item class="round" lines="none">
+                <ion-textarea value="{{Post.description}}" placeholder="{{Post.description}}">
+                </ion-textarea>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ImagesRow" text-center justify-content-center>
+          <ion-col text-center size="auto" *ngFor="let image of [0,1,2,3]">
+
+            <ion-thumbnail>
+
+              <ion-img *ngIf="Post.images[image]" src="{{Server}}/uploads/post/{{ Post.images[image]['imageurl'] }}">
+              </ion-img>
+              <ion-img *ngIf="!Post.images[image]" src="{{ImgSrcDefault}}" (click)="Addimage()"></ion-img>
+              <div *ngIf="Post.images[image]" class="overlay">
+                <ion-icon class="deleteIcon" name="close"
+                  (click)="deleteImage(Post.images[image]['id'],Post.images[image]['imageurl'])"></ion-icon>
+              </div>
+            </ion-thumbnail>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+    <ion-slide class="fullHeight2">
+      <ion-grid class="fullHeight2">
+        <ion-row>
+          <ion-grid id="ScheduleHeader">
+            <ion-row>
+              <ion-col size="7">
+                <ion-row>
+                  <ion-label>{{Post.title}}</ion-label>
+                </ion-row>
+                <ion-row>
+                  <h4>Schedule</h4>
+                </ion-row>
+              </ion-col>
+              <ion-col id="NewSlot" text-right size="3">
+                <span class="Circle" (click)="AddSlot()">
+                  <ion-icon name="add"></ion-icon>
+                  <ion-label>New</ion-label>
+                </span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <div class="line2"></div>
+        </ion-row>
+        <ion-row>
+          <ion-grid id="ScheduleGrid">
+            <ion-row class="HeaderRowSchedule">
+              <ion-col>
+                <p>Starting</p>
+                <p>Day</p>
+              </ion-col>
+              <ion-col>
+                <p>Ending</p>
+                <p>Day</p>
+              </ion-col>
+              <ion-col>
+                <p>Starting</p>
+                <p>Hour</p>
+              </ion-col>
+              <ion-col>
+                <p>Ending</p>
+                <p>Hour</p>
+              </ion-col>
+              <ion-col>
+                <p>Options</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="SlotRow" *ngFor=" let slot of SlotsList.GetAll(); let i = index">
+              <ion-col class="dark" (click)="datePickerDayBegin.open()">
+                <ion-datetime hidden="true" id="datePickerDayBegin" #datePickerDayBegin [disabled]="SlotToEdit !== i"
+                  (ionChange)="DatePickerChange($event,i)" display-format="DD M YY" picker-format="DD/MMMM/YYYY"
+                  min="{{year}}-{{month}}-{{day}}" max="{{year}}-{{month}}"></ion-datetime>
+                <ion-label *ngIf="slot.getDayBegin() !== undefined">{{slot.getDayBegin()}}</ion-label>
+                <ion-label *ngIf="slot.getDayBegin() == undefined">Select</ion-label>
+              </ion-col>
+              <ion-col (click)="datePickerDayEnd.open()">
+                <ion-datetime hidden="true" id="datePickerDayEnd" #datePickerDayEnd [disabled]="SlotToEdit !== i"
+                  (ionChange)="DatePickerChange($event,i)" display-format="DD M YY" picker-format="DD/MMMM/YYYY"
+                  min="{{year}}-{{month}}-{{LimiterDatePickerDelivery}}" max="{{year}}-{{month}}"></ion-datetime>
+                <ion-label></ion-label>
+                <ion-label *ngIf="slot.getDayEnd() !== undefined">{{slot.getDayEnd()}}</ion-label>
+                <ion-label *ngIf="slot.getDayEnd() == undefined">Select</ion-label>
+              </ion-col>
+              <ion-col class="dark" (click)="datePickerHourBegin.open()">
+                <ion-datetime hidden="true" id="datePickerHourBegin" #datePickerHourBegin [disabled]="SlotToEdit !== i"
+                  (ionChange)="DatePickerChange($event,i)" display-format="H m " minuteValues="00,30"></ion-datetime>
+                <ion-label *ngIf="slot.getHourBegin() !== undefined">{{slot.getHourBegin().substring(0,5)}}</ion-label>
+                <ion-label *ngIf="slot.getHourBegin() == undefined">Select</ion-label>
+              </ion-col>
+              <ion-col (click)="datePickerHourEnd.open()">
+                <ion-datetime hidden="true" id="datePickerHourEnd" #datePickerHourEnd [disabled]="SlotToEdit !== i"
+                  (ionChange)="DatePickerChange($event,i)" display-format="H m " minuteValues="00,30"></ion-datetime>
+                <ion-label *ngIf="slot.getHourEnd() !== undefined">{{slot.getHourEnd().substring(0,5)}}</ion-label>
+                <ion-label *ngIf="slot.getHourEnd() == undefined">Select</ion-label>
+              </ion-col>
+              <ion-col class="dark">
+                <ion-col class="dark" (click)="enableEditing(i)">
+                  <ion-label>
+                    <span class="dot" [ngClass]="{'active' : SlotToEdit == i}">
+                      <ion-icon name="create" ></ion-icon>
+                    </span>
+                  </ion-label>
+                </ion-col>
+                <ion-col class="dark" (click)="presentActionSheet(i,slot)">
+                  <ion-label>
+                    <span class="dot">
+                      <ion-icon name="trash"></ion-icon>
+                    </span>
+                  </ion-label>
+                </ion-col>
+              </ion-col>
+            </ion-row>
+          </ion-grid> <!--   Schedule GRID  -->
+        </ion-row>
+        <ion-row class="FooterRow" (click)="SubmitSlots()">
+          <ion-col></ion-col>
+          <ion-col>SAVE</ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

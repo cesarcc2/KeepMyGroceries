@@ -1,0 +1,104 @@
+
+<ion-content fullscreen *ngIf="ViewLoaded">     
+
+<ion-grid>
+  <ion-row>
+    <ion-col padding class="header">
+      <h4>Define the schedule</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+        <ion-grid class="GridCalendar">
+            <ion-datetime hidden="true" id="datePickerRecieveHour" #datePickerRecieveHour (ionChange)="DatePickerChange($event,i)" display-format="H m" hourValues="{{this.AvailableHours}}" minuteValues="{{this.AvailableMinutes}}"></ion-datetime>
+            <ion-datetime hidden="true" id="datePickerDeliverHour" #datePickerDeliverHour (ionChange)="DatePickerChange($event,i)" display-format="h m"></ion-datetime>
+            <ion-row justify-content-center class="dayOfWeek">
+              <ion-col class="WeekCol">
+                SUN
+              </ion-col>
+              <ion-col class="WeekCol">
+                MON
+              </ion-col>
+              <ion-col class="WeekCol">
+                TUE
+              </ion-col>
+              <ion-col class="WeekCol">
+                WED
+              </ion-col>
+              <ion-col class="WeekCol">
+                THU
+              </ion-col>
+              <ion-col class="WeekCol">
+                FRI
+              </ion-col>
+              <ion-col class="WeekCol">
+                SAT
+              </ion-col>
+        
+            </ion-row>
+        
+            <ion-row justify-content-center class="dayOfMonth" *ngFor="let week of Calendar">
+              <ion-col class="DayDisabled" id="RecieveDay{{week[0]}}" [ngClass]="{'empty' : week[0] == '','DayEnabled': this.AvailableDays.indexOf(week[0]) !== -1,'Selected': this.highlighted === week[0],'SelectedRecieveDay': this.highlightedRecieveDay === week[0],'SelectedDeliverDay': this.highlightedDeliverDay === week[0],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[0])}" (click)="DaySelected(week[0])">
+                {{week[0]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[1]}}" [ngClass]="{'empty' : week[1] == '','DayEnabled': this.AvailableDays.indexOf(week[1]) !== -1,'Selected': this.highlighted === week[1],'SelectedRecieveDay': this.highlightedRecieveDay === week[1],'SelectedDeliverDay': this.highlightedDeliverDay === week[1],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[1])}" (click)="DaySelected(week[1])">
+                {{week[1]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[2]}}" [ngClass]="{'empty' : week[2] == '','DayEnabled': this.AvailableDays.indexOf(week[2]) !== -1,'Selected': this.highlighted === week[2],'SelectedRecieveDay': this.highlightedRecieveDay === week[2],'SelectedDeliverDay': this.highlightedDeliverDay === week[2],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[2])}" (click)="DaySelected(week[2])">
+                {{week[2]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[3]}}" [ngClass]="{'empty' : week[3] == '','DayEnabled': this.AvailableDays.indexOf(week[3]) !== -1,'Selected': this.highlighted === week[3],'SelectedRecieveDay': this.highlightedRecieveDay === week[3],'SelectedDeliverDay': this.highlightedDeliverDay === week[3],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[3])}" (click)="DaySelected(week[3])">
+                {{week[3]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[4]}}" [ngClass]="{'empty' : week[4] == '','DayEnabled': this.AvailableDays.indexOf(week[4]) !== -1,'Selected': this.highlighted === week[4],'SelectedRecieveDay': this.highlightedRecieveDay === week[4],'SelectedDeliverDay': this.highlightedDeliverDay === week[4],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[4])}" (click)="DaySelected(week[4])">
+                {{week[4]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[5]}}" [ngClass]="{'empty' : week[5] == '','DayEnabled': this.AvailableDays.indexOf(week[5]) !== -1,'Selected': this.highlighted === week[5],'SelectedRecieveDay': this.highlightedRecieveDay === week[5],'SelectedDeliverDay': this.highlightedDeliverDay === week[5],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[5])}" (click)="DaySelected(week[5])">
+                {{week[5]}}
+              </ion-col>
+              <ion-col class="DayDisabled" id="RecieveDay{{week[6]}}" [ngClass]="{'empty' : week[6] == '','DayEnabled': this.AvailableDays.indexOf(week[6]) !== -1,'Selected': this.highlighted === week[6],'SelectedRecieveDay': this.highlightedRecieveDay === week[6],'SelectedDeliverDay': this.highlightedDeliverDay === week[6],'RecieveDeliverSameDay': this.RecievingDay && this.DeliverDay && this.RecievingDay == this.DeliverDay && this.RecievingDay == this.DayNumbertoDate(week[6])}" (click)="DaySelected(week[6])">
+                {{week[6]}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-col>
+  </ion-row>
+
+  <ion-row padding>
+    <ion-col  size="6">
+      <div class="BoxInformation">
+          <ion-label>Recieving Day</ion-label><br>
+          <ion-label class="information"> {{RecievingDay}} </ion-label>
+          <!-- <ion-label class="information">{{RecievingHour}}</ion-label> -->
+          <ion-icon name="create" slot="end" (click)="this.Parameter='RecieveDay'"  [ngClass]="{'EditIconSelected': this.Parameter == 'RecieveDay' && this.RecievingDay}"></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="BoxInformation">
+          <ion-label>Delivery Day</ion-label><br>
+          <ion-label class="information"> {{DeliverDay}} </ion-label>
+          <ion-icon name="create" slot="end" (click)="this.Parameter='DeliverDay'" [ngClass]="{'EditIconSelected': this.Parameter == 'DeliverDay' && this.RecievingDay}"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+        <ion-card no-padding>
+          <form [formGroup]="SubmitUserServiceForm">
+          <ion-card-content no-padding>
+              <ion-item>
+                <ion-label class="smallfont">Home delivery</ion-label>
+                <ion-toggle size="small" color="primary" [disabled]="Post.homedelivery == 'f'" checked="false" formControlName="Homedelivery"></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-textarea class="smallfont" placeholder="Any details you feel like pointing out?" formControlName="Details"></ion-textarea>
+              </ion-item>
+          </ion-card-content>
+        </form>
+        </ion-card>
+
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="Submit()" color="dark" shape="full" expand="block">Submit</ion-button>
+</ion-footer>

@@ -1,0 +1,92 @@
+<ion-content padding>
+  <form [formGroup]="createPost" class="fullHeight">
+    <div class="Height10">
+      <h2 id="Title">Post creation</h2>
+    </div>
+    <ion-grid no-padding no-margin>
+      <ion-row>
+        <ion-list no-padding>
+          <ion-item lines="none" class="subTitle">
+            <h4>Title and description</h4>
+          </ion-item>
+          <div>
+            <ion-item class="paddingBottomInput">
+              <ion-input formControlName="title" type="text" placeholder="Post's Title"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Description about your service" formControlName="description"></ion-input>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-row>
+      <ion-row>
+        <ion-list>
+          <ion-item lines="none" class="subTitle">
+            <h4>Specifications</h4>
+          </ion-item>
+          <div>
+            <ion-item class="paddingBottomInput">
+              <ion-label>Home delivery</ion-label>
+              <ion-toggle color="primary" formControlName="homedelivery"></ion-toggle>
+              <ion-icon name="help" sloit="end" (click)="this.presentPopover('homedelivery');"></ion-icon>
+            </ion-item>
+
+            <ion-item class="paddingBottomInput">
+              <ion-label>Storage Privacy</ion-label>
+              <ion-toggle color="primary" formControlName="storageprivacy"></ion-toggle>
+              <ion-icon name="help" (click)="this.presentPopover('storageprivacy');"></ion-icon>
+            </ion-item>
+
+            <ion-item class="paddingBottomInput">
+              <ion-label>Storage Size</ion-label>
+              <ion-select interface="popover" placeholder="Storage Size" formControlName="storagesize">
+                <ion-select-option value="1">S</ion-select-option>
+                <ion-select-option value="2">M</ion-select-option>
+                <ion-select-option value="3">L</ion-select-option>
+                <ion-select-option value="4">X</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="paddingBottomInput">
+              <ion-label>Storage Type</ion-label>
+              <ion-select interface="popover" placeholder="Storage Type" formControlName="storagetype">
+                <ion-select-option value="1">Dry</ion-select-option>
+                <ion-select-option value="2">Refrigerated</ion-select-option>
+                <ion-select-option value="3">Dry and Refrigerated</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-row>
+      <ion-row>
+        <ion-list>
+          <ion-item lines="none" class="subTitle">
+            <h4>Images</h4>
+          </ion-item>
+          <ion-icon padding style="font-size: 40px;" name="add-circle-outline" *ngIf="4 > images.length"
+            (click)="selectImage();"></ion-icon>
+          <div class="thumbnailDiv" *ngFor="let image of images">
+            <ion-thumbnail slot="end" class="thumbnail">
+              <img src="{{image.path}}">
+            </ion-thumbnail>
+          </div>
+        </ion-list>
+      </ion-row>
+      <ion-row no-margin>
+        <ion-col no-margin>
+          <ion-chip color="primary" *ngIf="warningMessage">
+            <ion-icon name="warning"></ion-icon>
+            <ion-label>{{warningMessage}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row no-margin text-center>
+        <ion-col no-margin text-center>
+          <ion-button (click)="openAddressPickerModal()" color="primary">Next</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+
+</ion-content>

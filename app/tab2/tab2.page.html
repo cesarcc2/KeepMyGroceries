@@ -1,0 +1,158 @@
+<!-- Insert Host Data -->
+<ion-content id="InsertHostData" padding *ngIf="State==false">
+  <ion-grid id="Grid2">
+    <ion-row id="HeaderHostData" justify-content-center>
+      <ion-col align-self-center size-md="9" size-lg="5" size-xs="12">
+        <h2 style="text-align: center;">Before you become a host <br> we need more information <br> about
+          you.</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center id="BodyHostData">
+      <ion-col align-self-center size-md="8" size-lg="5" size-xs="12">
+        <form [formGroup]="updateHostDataForm">
+          <ion-list class="round">
+            <ion-item lines="none" class="paddingBottomInput round">
+              <ion-input formControlName="phoneNumber" type="tel" placeholder="Phone Number"></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="round">
+              <ion-textarea placeholder="Description about yourself" formControlName="description">
+              </ion-textarea>
+            </ion-item>
+            <ion-item lines="none" class="paddingBottomInput round" (click)="selectImage();">
+              <ion-label>
+                Upload profile photo
+              </ion-label>
+              <ion-thumbnail slot="end">
+                <img src="{{image}}">
+              </ion-thumbnail>
+            </ion-item>
+            <ion-item lines="none" class="paddingBottomInput round">
+              <ion-button slot="start" (click)="SubmitHostData()" *ngIf="State==false">Continue
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <ion-chip color="medium" *ngIf="warningMessage">
+            <ion-icon name="warning"></ion-icon>
+            <ion-label>{{warningMessage}}</ion-label>
+          </ion-chip>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+
+<!-- Host Dashboard -->
+<ion-content fullscreen *ngIf="State==true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light" size="small" (click)="this.router.navigate(['/create-post']);">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-segment [(ngModel)]="tabs" id="ionSegment" (ionChange)="TabChange($event)">
+    <ion-segment-button value="storages">
+      <ion-label>STORAGES</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="orders">
+      <ion-label>ORDERS</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-slides #sliders class="fullHeightSlides" pager="true" (ionSlideDidChange)="SlideChange()">
+    <ion-slide class="fullHeight">
+      <ion-grid class="fullHeight">
+        <ion-row class="HeaderRow">
+          <ion-col>
+            <p>{{Me.name}} {{Me.surname}}</p>
+            <h3>YOUR STORAGES</h3>
+          </ion-col>
+          <div class="line"></div>
+        </ion-row>
+        <ion-row *ngFor="let post of Posts">
+          <ion-col>
+            <ion-list class="PostList round dark" [ngClass]="{'Darker' : SelectedPost == post.id}">
+              <ion-item class="roundItem dark" lines="none" (click)="Select(post.id)"
+                [ngClass]="{'Darker' : SelectedPost == post.id}">
+                <ion-label>{{post.title}}</ion-label>
+
+                <ion-chip color="success" *ngIf="post.active == 't'" (click)="ActivatePost(post)">
+                  <ion-label color="success">Active</ion-label>
+                  <ion-icon name="radio-button-on"></ion-icon>
+                </ion-chip>
+
+                <ion-chip color="medium" *ngIf="post.active == 'f'" (click)="ActivatePost(post)">
+                  <ion-label color="medium">Not Active</ion-label>
+                  <ion-icon name="radio-button-on"></ion-icon>
+                </ion-chip>
+
+              </ion-item>
+              <ion-item id="PostOptionsWrapper" *ngIf="SelectedPost == post.id" class="roundItem dark" lines="none"
+                [ngClass]="{'Darker' : SelectedPost == post.id}">
+                <ion-chip color="light">
+                  <ion-label class="labelsemi">ORDERS </ion-label>
+                  <ion-badge class="badge" color="primary" *ngIf="Orders">
+                    {{this.DB.MyOrders.NumberOrdersPerPost(post.id)}}</ion-badge>
+                  <ion-badge class="badge" color="primary" *ngIf="!Orders">0</ion-badge>
+                </ion-chip>
+                <ion-button slot="end" (click)="this.router.navigate(['post-details-host/' + post.id + '/' + 0])">
+                  DETAILS
+                </ion-button>
+                <ion-button slot="end" (click)="DeletePost(post)">DELETE</ion-button>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+    <ion-slide>
+      <ion-grid class="fullHeight width90">
+        <ion-row class="HeaderRow">
+          <ion-col class="HeaderCol">
+            <p>{{Me.name}} {{Me.surname}}</p>
+            <h3>ORDERS OF YOUR STORAGES</h3>
+          </ion-col>
+          <div class="line"></div>
+        </ion-row>
+        <ion-row *ngFor="let order of Orders">
+          <ion-col>
+            <ion-list class="OrderList round dark">
+              <ion-item class="roundItem titleItem" lines="none">
+                <label>{{order.post.title}}</label>
+              </ion-item>
+              <ion-item class="roundItem dark" lines="none">
+                <ion-chip no-margin color="primary" slot="start">
+                  <ion-icon name="return-left"></ion-icon>
+                  <ion-label>Recieve</ion-label>
+                </ion-chip>
+                <ion-chip no-margin color="light" slot="end">
+                  <ion-label class="OrderInfoLabel">{{order.dayRecieve}}</ion-label>
+                </ion-chip>
+                <ion-chip no-margin color="light" slot="end">
+                  <ion-label class="OrderInfoLabel">{{order.hourRecieve}}H</ion-label>
+                </ion-chip>
+              </ion-item>
+              <ion-item class="roundItem dark" lines="none">
+                <ion-chip no-margin color="primary" slot="start">
+                  <ion-icon name="return-right"></ion-icon>
+                  <ion-label>Deliver</ion-label>
+                </ion-chip>
+                <ion-chip no-margin color="light" slot="end">
+                  <ion-label class="OrderInfoLabel">{{order.dayDeliver}}</ion-label>
+                </ion-chip>
+                <ion-chip no-margin color="light" slot="end">
+                  <ion-label class="OrderInfoLabel">{{order.hourDeliver}}H</ion-label>
+                </ion-chip>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

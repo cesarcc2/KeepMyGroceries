@@ -1,0 +1,118 @@
+<ion-content fullscreen *ngIf="this.Post">
+  <div id="Header">
+    <div id="map_canvasDetail"></div>
+  </div>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-segment [(ngModel)]="tabs">
+    <ion-segment-button value="Overview">
+      <ion-label>Overview</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Host">
+      <ion-label>Host</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="OverView" *ngIf="tabs == 'Overview'">
+
+    <ion-grid>
+      <ion-row id="titleRow">
+        <ion-col>
+          <h2 class="SemiBold title">{{Post.title}}</h2>
+        </ion-col>
+        <div class="line"></div>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="Regular description">
+          {{Post.description}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-slides [options]="sliderOpts" [pager]="true">
+            <ion-slide *ngFor="let image of Post.images">
+              <img src="{{Server}}/uploads/post/{{ image['imageurl'] }}">
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label class="PostListAttribute">Storage type</ion-label>
+              <ion-label class="PostListAttributeEnd" text-right no-padding slot="end">Refrigerated</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label class="PostListAttribute">Storage size</ion-label>
+              <ion-label class="PostListAttributeEnd" text-right no-padding slot="end">Big</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label class="PostListAttribute">Storage privacy</ion-label>
+              <ion-icon class="PostListIcon" slot="end" name="close-circle-outline"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label class="PostListAttribute">Home delivery</ion-label>
+              <ion-icon class="PostListIcon" slot="end" name="checkmark-circle-outline"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div>
+
+
+
+  <div class="Host" *ngIf="tabs == 'Host'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <div float-left>
+            <ion-avatar>
+              <ion-img src="{{Server}}/uploads/host/{{Post.host.photo}}"></ion-img>
+              <!-- <ion-img src="{{Server}}/uploads/host/{{Post.host.photo}}"></ion-img> -->
+            </ion-avatar>
+          </div>
+          <div float-left margin>
+            <ion-row no-padding id="HostRating">
+              <ion-icon name="heart"></ion-icon>
+              <ion-icon name="heart-empty"></ion-icon>
+              <ion-icon name="heart-empty"></ion-icon>
+              <ion-icon name="heart-empty"></ion-icon>
+              <ion-icon name="heart-empty"></ion-icon>
+            </ion-row>
+            <ion-row no-padding>
+              <h3 id="HostName" class="SemiBold">{{Post.host.name}} {{Post.host.surname}}</h3>
+            </ion-row>
+            <ion-row no-padding id="HostPhoneNumber">
+              Email : {{Post.host.email}} <br> PhoneNumber: {{Post.host.phoneNumber}}
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div class="lineHost"></div>
+      <ion-row>
+        <ion-col margin id="HostDescription">
+          {{Post.host.description}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+
+
+<ion-footer class="Bold Footer" (click)="UserService()">
+  HIRE THIS STORAGE <ion-icon name="calendar"></ion-icon>
+</ion-footer>

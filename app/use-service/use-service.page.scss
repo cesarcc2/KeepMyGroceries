@@ -1,0 +1,141 @@
+ion-content{
+  --background:#F5F5F5;
+}
+
+.fullHeight { 
+    height: 100%; 
+}
+
+.thumbnail {
+    padding: 5px;
+    height: 80%;
+    width: 30%;
+    float: left;
+}
+
+.dayOfWeek{
+  font-size: 12px;
+  color: rgb(255, 240, 240);
+  font-weight: 400;
+}
+
+.dayOfMonth{
+  color: rgb(255, 255, 255);
+  font-weight: 150;
+}
+
+.WeekCol{
+  text-align: center;
+  height: 25px;
+  background-color: #2F3241;
+  margin:2px;
+  font-family: 'Raleway-Bold';
+}
+
+.empty{
+  background-color: #EAEAEA !important;
+}
+
+.DayDisabled{
+  color: #EAEAEA;
+  background-color: rgb(255, 255, 255);
+  font-weight: 300;
+  text-align: center;
+  border: 1px solid;
+  border-width: thin;
+  border-color: rgba(150, 150, 150, 0.041);
+  margin:2px;
+  font-family: 'Raleway-Bold';
+  height: 2.2rem;
+}
+
+.DayEnabled{
+  text-align: center;
+  background-color: rgb(250, 254, 255);
+  color: #78849E;
+  font-weight: 500;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-width: thin;
+  border-color: rgba(0, 195, 255, 0.075);
+  margin:2px;
+  font-family: 'Raleway-Bold';
+  height: 2.2rem;
+}
+
+.DayInvalid{
+  color: rgb(105, 105, 105);
+  background-color: rgb(224, 224, 224);
+  font-weight: 300;
+  text-align: center;
+  border: 1px solid;
+  border-width: thin;
+  border-color: rgba(150, 150, 150, 0.041);
+  margin:2px;
+  font-family: 'Raleway-Bold';
+  height: 2.2rem;
+}
+
+.RecieveDeliverSameDay{
+  background: linear-gradient(to bottom, #44A9D6 50%, #155E7E 50%);
+}
+
+.Selected{
+  border:1px rgba(0, 0, 0, 0.11) solid;
+}
+.SelectedRecieveDay{
+  background-color: #44A9D6;
+  color:#FFF;
+}
+.SelectedDeliverDay{
+  background-color: #155E7E;
+  color:#FFF;
+}
+ion-card-title{
+  font-size: 20px;
+}
+
+.informationSelection{
+  font-size: 11px;
+}
+
+.EditIconSelected{
+  color: #44A9D6;
+}
+
+.smallfont{
+  font-size:13px;
+}
+
+.header{
+  color: #78849E;
+  font-family: 'Raleway-Bold';
+  font-size: 1rem;
+  margin-bottom: -25px;
+}
+
+.BoxInformation{
+  font-family: 'Raleway-Regular';
+  font-size:0.8rem;
+  background-color: #454F63;
+  color:#FFF;
+  border-radius: 5px;
+  height: 3.2rem;
+  padding-top:10px;
+}
+
+.BoxInformation ion-label{
+  padding-left: 10px;
+}
+
+.information{
+  font-family: 'Raleway-SemiBold';
+  font-size:12px;
+}
+
+ion-icon{
+  position: absolute;
+  top:  20%;
+  left: 85%;
+  font-size: 15px;
+}

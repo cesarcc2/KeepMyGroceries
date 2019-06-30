@@ -1,0 +1,144 @@
+ion-content{
+    --background: #F5F5F5;
+}
+
+ion-slides { 
+    --bullet-background: rgb(172, 172, 172);
+    --bullet-background-active: #44A9D6;
+    
+}
+
+#HeaderSegment{
+    background-color:#F5F5F5;
+}
+
+.logo{
+    text-align: center;
+    margin:auto;
+    ion-img{
+        width: 9rem !important;
+        height: 9rem !important;
+        margin:auto;
+    }
+}
+
+.title{
+    font-family: 'Raleway-ExtraBold';
+    font-size: 3.5rem;
+    line-height: 2.2rem;
+    color: #44A9D6;
+
+    span{
+        font-size: 2.6rem;
+        padding-left: 0;
+        margin-right: 10px;
+    }
+}
+
+.text{
+    font-family: 'Raleway-Regular';
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+    color: #838383;
+}
+
+.button{
+    font-family: 'Raleway-ExtraBold';
+    font-size: 0.9rem;
+    height: 3.6rem;
+    padding-bottom: 0.7rem;
+    --border-radius: 5px;
+}
+
+.black{
+    font-family: 'Raleway-Black';
+    font-size: 0.7rem;
+    color:#707070;
+}
+
+
+
+// LOGIN SLIDE
+
+.logo{
+    height: 70%;
+    width: 70%;
+}
+
+ion-content{
+    --background: #F5F5F5;
+}
+
+h2{
+    font-family: 'Raleway-ExtraBold' !important;
+    color:#155E7E;
+    font-size: 2rem;
+}
+
+
+ion-button {
+    font-weight: 300;
+}
+
+.Login, .Create{
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+.ionSegment,ion-segment-button,#HeaderSegment{
+    background-color:#FFF;
+}
+
+.Input{
+    background-color: #FFF;
+    border-radius: 10px;
+    height: 3rem; 
+    margin-bottom: 10px;
+}
+
+.inputitem{
+    position: relative;
+    top:5px;
+    font-family: 'Raleway-SemiBold' !important;
+}
+
+.ButtonContinue{
+    --border-radius: 10px;
+    --background:#44A9D6;
+    font-family: 'Raleway-Black' !important;
+    height:3rem;
+    font-size: 1rem;
+}
+
+#Back{
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+}
+
+.backIcon{
+    text-align: center;
+    font-size: 1.5rem;
+    position: relative;
+    top:25%;
+    color: rgb(167, 167, 167);
+}
+
+.Spaced{
+    padding-bottom: 40px;
+}
+
+.Spaced3{
+    margin-bottom: 85px;
+}
+
+.fullHeight{
+    height: 100%;
+}
+
+.GreyBody{
+    background-color:#F5F5F5;
+}
+
+.centered{
+    margin-top:130px;
+}

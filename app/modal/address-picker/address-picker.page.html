@@ -1,0 +1,80 @@
+<ion-content fullscreen>
+  <ion-grid no-margin no-padding>
+    <ion-row [ngClass]="{'mapRowFull' : !SelectedAddressState , 'mapRow': SelectedAddressState}">
+      <ion-col no-margin no-padding>
+        <div id='map'></div>
+      </ion-col>
+    </ion-row>
+    <ion-row id="FormRow" [ngClass]="{'FormRowFull' : !SelectedAddressState , 'FormRow': SelectedAddressState}">
+      <ion-col no-padding no-margin>
+        <ion-toolbar color="danger">
+          <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()"
+            placeholder="Search for a place">
+          </ion-searchbar>
+        </ion-toolbar>
+        <ion-list [hidden]="autocompleteItems.length == 0">
+          <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
+        <div *ngIf="SelectedAddressState">
+          <ion-row>
+            <ion-col>
+              <ion-item class="roundItem">
+                <ion-label>{{country}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item class="roundItem">
+                <ion-label>{{city}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="roundItem paddingBottomInput">
+                <ion-label>{{region}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              <ion-item class="roundItem">
+                <ion-label>{{address}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="4">
+              <ion-item class="roundItem">
+                <ion-label>{{postCode}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="roundItem">
+                <ion-input placeholder="Door Number*" [(ngModel)]="doorNumber"></ion-input>
+                <!-- <ion-label *ngIf="doorNumber">{{doorNumber}}</ion-label> -->
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item class="roundItem">
+                <ion-input placeholder="Floor" [(ngModel)]="floor"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row text-center no-margin *ngIf="!submitionValidationState">
+              <ion-col no-margin text-center>
+                <ion-chip color="primary">Fill all mandatory fields</ion-chip>
+              </ion-col>
+            </ion-row>
+          <ion-row text-center no-margin>
+            <ion-col no-margin text-center>
+              <ion-button expand="block" color="primary" (click)="SubmitAddress()">Submit</ion-button>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

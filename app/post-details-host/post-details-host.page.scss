@@ -1,0 +1,360 @@
+img{
+    padding-top: 5%;
+    padding-bottom: 15%;
+}
+
+
+ion-footer{
+    background: #44A9D6 !important;
+}
+strong{
+    color:#000;
+}
+
+#Header{
+    background: rgb(168, 168, 168);
+    height: 15%;
+}
+
+#map_canvasDetail{
+   height: 100%;
+   width:  100%; 
+}
+
+.Bold{
+    font-family: 'Raleway-Bold';
+    font-size: 1rem;
+}
+
+.SemiBold{
+    font-family: 'Raleway-SemiBold';
+    color:#454F63;
+}
+
+.Regular{
+    font-family: 'Raleway-Regular';
+}
+
+.description{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color:#78849E;
+}
+
+.Footer{
+    color: #FFF;
+    background: #44A9D6 !important;
+    text-align: center;
+    padding-top: 0.4rem;
+    height: 3rem;
+}
+
+ion-footer ion-icon{
+    font-size: 1.5rem;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+ion-segment{
+    --indicator-color-checked:#155E7E;
+    font-family: 'Raleway-ExtraBold';
+    --color-checked :#454F63;
+    --color:#959DAD;
+    height: 8% !important;
+}
+
+.line{
+    width: 60%;
+    height: 60px;
+    border-bottom: 2px solid #44A9D6;
+    position: absolute;
+    left: 0px;
+}
+
+.OverView, .Host{
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+.title{
+    color:#454F63;
+}
+
+
+
+.PostListAttribute{
+    font-family: 'Raleway-Bold';
+    color: #454F63;
+    font-size: 0.8rem;
+}
+
+.PostListAttributeEnd{
+    font-family: 'Raleway-Regular';
+    color:#78849E;
+    font-size: 0.8rem;
+}
+
+
+.fullHeight{
+    height: 92%;
+}
+
+.fullHeight2{
+    height: 100%;
+}
+
+.HeaderRow{
+    text-align: left;
+    margin-left: 1rem;
+    margin-top: 0;
+    color:#454F63;
+    line-height: 0px;
+    p{
+        font-family:"Raleway-Regular";
+    }
+    h4{
+        font-family:"Raleway-SemiBold";
+    }
+}
+
+.round { 
+    border-radius: 15px !important; 
+    padding-left: 10px !important; 
+    padding-right: 10px !important; 
+    padding-bottom: 5px !important; 
+    padding-top: 5px !important;
+}
+
+.line{
+    width: 13.5rem;
+    height: 2px;
+    top:80px;
+    border-bottom: 2px solid #44A9D6;
+    position: absolute;
+    left: 0px;
+    background-color: #44A9D6;
+}
+
+.line2{
+    width: 13.5rem;
+    height: 1px;
+    top:80px;
+    border-bottom: 2px solid #44A9D6;
+    position: absolute;
+    left: 0px;
+    background-color: #44A9D6;
+}
+
+ion-slides{
+    background-color: rgba(245, 245, 245, 1) !important;
+}
+
+#descriptionP{
+    margin-left: 2rem !important;
+    margin-top: 2rem !important;
+    font-family:"Raleway-Regular";
+    color:rgba(120, 132, 158, 1);
+    font-size: 0.9rem;
+}
+
+.HeaderCol{
+    margin-left: 1rem !important;
+}
+
+ion-thumbnail{
+    --size:5rem;
+}
+
+.ImagesRow{
+    background-color: rgba(51, 51, 51, 0.103);
+}
+
+.ImagesCol{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0);
+  }
+
+  .deleteIcon {
+    color: rgb(24, 24, 24);
+    font-size: 20px;
+    position: absolute;
+    top: 15%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .active{
+      color:#44A9D6;
+  }
+
+  ion-item{
+      font-family: "Raleway-Regular" !important;
+  }
+
+  ion-textarea{
+      width:100% !important;
+      height: 100% !important;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin:0px;
+      border: none
+  }
+
+
+
+  .HeaderRowSchedule{
+    background-color: rgba(49, 49, 49, 0.089);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    ion-col{
+        text-align: center;
+        margin:auto;
+        p{
+            font-size: 14px;
+            line-height: 1px;
+            font-family: "Raleway-SemiBold";
+            color:#155E7E;
+        }
+    }
+}
+
+#ScheduleGrid{
+
+
+
+    .SlotRow{
+        
+        
+        margin-bottom: 5px;
+
+        ion-col{
+            background-color:#44A9D6;
+            text-align: center;
+            color:#FFF;
+            font-size: 10px;
+            font-family: "Raleway-Bold";
+
+            ion-label{
+                margin:auto;
+            }
+
+            .dot {
+                height: 1.1rem;
+                width: 1.1rem;
+                background-color: rgb(255, 255, 255);
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                ion-icon{
+                    font-size: 12px;
+                    color:#155E7E;
+                    margin:auto;
+                }
+
+                
+
+            }
+            .active{
+                background-color:#44A9D6;
+                ion-icon{
+                    font-size: 12px;
+                    color:rgb(255, 255, 255);
+                    margin:auto;
+                }
+            }
+        }
+        .dark{
+            background-color:#155E7E;
+        }
+
+    }
+
+}
+
+#ScheduleHeader{
+
+    ion-row{
+        ion-label{
+            font-family:"Raleway-Regular";
+        }
+        h4{
+            font-family:"Raleway-SemiBold";
+        }
+        color:#454F63;
+        margin:0px;
+        padding:0px;
+
+        ion-col{
+            margin:0px;
+            margin-left: 1rem !important;
+            padding:0px;
+        }
+    }
+
+    #NewSlot{
+        .Circle{
+            height: 3.5rem;
+            width: 3.5rem;
+            background-color: #155E7E;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            color:#FFF;
+            font-family: "Raleway-Bold";
+            position: relative;
+            left:2rem;
+            top:0.5rem;
+
+            ion-icon{
+                font-size: 2rem;
+                position: relative;
+                top:2px;
+                left:1px;
+                color:#44A9D6;
+            }
+
+            ion-label{
+                font-size: 1rem;
+                position: relative;
+                bottom:0.5rem;
+
+            }
+        }
+    }
+}
+
+.FooterRow{
+    color: #FFF;
+    background: #44A9D6 !important;
+    text-align: center;
+    font-family: 'Raleway-Bold';
+    font-size: 1rem;
+    position: fixed;
+    left: 0;
+    bottom:0%;
+    right: 0;
+    height: 3rem;
+    ion-col{
+        margin:auto;
+    }
+}
